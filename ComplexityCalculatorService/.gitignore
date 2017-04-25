@@ -2,6 +2,7 @@
 # Directories #
 target/
 .settings/
+.metadata/
  
 *.class
 
