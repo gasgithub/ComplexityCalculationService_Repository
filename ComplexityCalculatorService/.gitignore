@@ -1,0 +1,22 @@
+
+# Directories #
+target/
+.settings/
+ 
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.rar
+ 
+######################
+# Eclipse
+######################
+
+.checkstyle
+.classpath
+.factorypath
+.project
+ 
