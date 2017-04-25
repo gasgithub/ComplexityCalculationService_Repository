@@ -234,6 +234,7 @@
                             <id>validate</id>
                             <phase>validate</phase>
                             <configuration>
+                                <failOnViolation>false</failOnViolation>
                                 <configLocation>
                                     ${project.basedir}/src/main/resources/checker.xml
                                 </configLocation>
