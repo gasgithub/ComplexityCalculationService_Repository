@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+
+    <!-- Illegal imports overrides 
+    <suppress files="LogConfigurationContextListener\.java" checks="IllegalImport"/>
+    <suppress files="LoggerUtils\.java" checks="IllegalImport"/>
+    <suppress files="ExceptionFilter\.java" checks="IllegalCatch"/>
+-->
+
+    <!-- Unit and integration tests -->
+    <suppress files="^.+(IT|Test)\.java$" checks="InnerAssignment" />
+    <suppress files="^.+(IT|Test)\.java$" checks="MagicNumber" />
+    <suppress files="^.+(IT|Test)\.java$" checks="VisibilityModifier" />
+    <suppress files="^.+(IT|Test)\.java$" checks="ClassDataAbstractionCoupling" />
+  
+</suppressions>
