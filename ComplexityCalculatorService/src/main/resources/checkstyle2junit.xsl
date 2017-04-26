@@ -11,11 +11,20 @@
 
   <xsl:template match="/">
     <testsuite>
+      <xsl:attribute name="name">
+        <xsl:value-of select="'checkstyle.TestApplication'" />
+      </xsl:attribute>
       <xsl:attribute name="tests">
-        <xsl:value-of select="count(.//file)" />
+       <xsl:value-of select="count(.//error)" />
       </xsl:attribute>
       <xsl:attribute name="failures">
         <xsl:value-of select="count(.//error)" />
+      </xsl:attribute>
+      <xsl:attribute name="errors">
+       <xsl:value-of select="0" />
+      </xsl:attribute>
+      <xsl:attribute name="skipped">
+        <xsl:value-of select="0" />
       </xsl:attribute>
       <xsl:for-each select="//checkstyle">
         <xsl:apply-templates />
