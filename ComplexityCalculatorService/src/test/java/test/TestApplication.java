@@ -117,7 +117,7 @@ public class TestApplication {
  		System.out.println("expectedObject.toString() : " + expectedObject.toString());
  		System.out.println("actualObject.toString()   : " + actualObject.toString());
  		
-         assertFalse("Incorrect value, value is " + actualObject.toString(), actualObject.equals(expectedObject));
+        assertTrue("Incorrect value, value is " + actualObject.toString(), actualObject.equals(expectedObject));
 
  	} catch (Exception e) {
 			e.printStackTrace();
