@@ -32,6 +32,7 @@ import org.junit.Test;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 //Data Model
 import com.ibm.migr.inventory.CalculationResult;
@@ -63,7 +64,7 @@ public class TestApplication {
 	}
 	
  @Test
- public void testCalculationResult() {
+ public void testJson2CalculationResult() {
 		// read json test
 		try {
  		JsonReader reader = Json.createReader(new StringReader(expectedJson));
@@ -87,18 +88,21 @@ public class TestApplication {
 
  	} catch (Exception e) {
 			e.printStackTrace();
-		}
+	}
+ }
 
+ @Test
+ public void testCalculationResult2Json() {
 		// write json test
 		try {
  		JsonObject actualJson = Json.createObjectBuilder()
- 				.add( "simpleWars", 1 )
- 				.add( "appClients", 2 )
-				.add( "moderateWars", 3 )
-				.add( "moderateEJBs", 4 ) 								
- 				.add( "rars", 5 )
-				.add( "complexWars", 6 )
-				.add( "complexEJBs", 7 )
+ 				.add( "simpleWars", expectedObject.getSimpleWars() )
+ 				.add( "appClients", expectedObject.getAppClients() )
+				.add( "moderateWars", expectedObject.getModerateWars() )
+				.add( "moderateEJBs", expectedObject.getModerateEJBs() ) 								
+ 				.add( "rars", expectedObject.getRars() )
+				.add( "complexWars", expectedObject.getSimpleWars() )
+				.add( "complexEJBs", expectedObject.getComplexEJBs() )
  				.build();
  		
  		CalculationResult actualObject = new CalculationResult();
@@ -113,7 +117,7 @@ public class TestApplication {
  		System.out.println("expectedObject.toString() : " + expectedObject.toString());
  		System.out.println("actualObject.toString()   : " + actualObject.toString());
  		
-         assertTrue("Incorrect value, value is " + actualObject.toString(), actualObject.equals(expectedObject));
+         assertFalse("Incorrect value, value is " + actualObject.toString(), actualObject.equals(expectedObject));
 
  	} catch (Exception e) {
 			e.printStackTrace();
