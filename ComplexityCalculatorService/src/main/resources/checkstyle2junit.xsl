@@ -47,14 +47,14 @@
         </xsl:attribute>
         <failure>
           <xsl:attribute name="message">
-            <xsl:value-of select="@message" />
+            <xsl:value-of select=" @message" />
           </xsl:attribute>
           <xsl:attribute name="type">
             <xsl:value-of select="@message" />
           </xsl:attribute>
-          <xsl:text>Line: </xsl:text> <xsl:value-of select="@line" />
-          <xsl:text> Message: </xsl:text> <xsl:value-of select="@message" />
-          <xsl:text> Resource: S</xsl:text> <xsl:value-of select="$filename" />
+          <xsl:text></xsl:text> <xsl:value-of select="$filename" />
+          <xsl:text>(</xsl:text> <xsl:value-of select="@line" />
+          <xsl:text>)</xsl:text>
         </failure>
       </testcase>
       </xsl:if>
