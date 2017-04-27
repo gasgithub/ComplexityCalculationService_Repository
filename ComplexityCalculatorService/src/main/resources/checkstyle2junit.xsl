@@ -33,24 +33,33 @@
   </xsl:template>
 
   <xsl:template match="file">
+    <xsl:variable name="filename" select="@name"/>
+    
     <xsl:for-each select=".//error">
+    <xsl:if test="@severity eq 'error'"> 
+
       <testcase>
-        <xsl:attribute name="classname">
-          <xsl:value-of select="../@name" />
-        </xsl:attribute>
         <xsl:attribute name="name">
-          <xsl:value-of select="../@name" />
+          <xsl:value-of select="@source" />
+        </xsl:attribute>
+        <xsl:attribute name="classname">
+          <xsl:value-of select="@source" />
         </xsl:attribute>
         <failure>
-          <xsl:attribute name="type">
-            <xsl:value-of select="@source" />
+          <xsl:attribute name="message">
+            <xsl:value-of select="@message" />
           </xsl:attribute>
-          <xsl:text>Line </xsl:text>
-          <xsl:value-of select="@line" />
+          <xsl:attribute name="type">
+            <xsl:value-of select="@message" />
+          </xsl:attribute>
+          <xsl:value-of select="$filename" />
+          <xsl:text> Line </xsl:text> <xsl:value-of select="@line" />
           <xsl:text>: </xsl:text>
           <xsl:value-of select="@message" />
         </failure>
       </testcase>
+      </xsl:if>
+      
     </xsl:for-each>
   </xsl:template>
 

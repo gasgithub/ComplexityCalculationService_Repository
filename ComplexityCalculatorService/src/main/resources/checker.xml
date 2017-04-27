@@ -6,23 +6,26 @@
 
 <module name="Checker">
 
+        <!-- Checks that there are no tab characters in the file.
     <module name="FileTabCharacter">
         <property name="severity" value="warning" />
-        <!-- Checks that there are no tab characters in the file.
-        -->
     </module>
+    -->
 
     <!--
 
     LENGTH CHECKS FOR FILES
 
     -->
+    
+    <!-- 
 
     <module name="FileLength">
         <property name="max" value="3000" />
         <property name="severity" value="warning" />
     </module>
 
+-->
 
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf" />
@@ -91,14 +94,14 @@
         METHOD LENGTH CHECKS
 
         -->
-
+<!-- 
         <module name="MethodLength">
             <property name="tokens" value="METHOD_DEF" />
             <property name="max" value="300" />
             <property name="countEmpty" value="false" />
-            <property name="severity" value="warning" />
+            <property name="severity" varning" />
         </module>
-
+-->
         <!--
 
         JAVADOC CHECKS
@@ -118,6 +121,7 @@
             <property name="allowUndeclaredRTE" value="true" />
         </module>
 
+<!-- 
         <module name="JavadocType">
             <property name="scope" value="protected" />
             <property name="severity" value="warning" />
@@ -126,7 +130,7 @@
         <module name="JavadocStyle">
             <property name="severity" value="warning" />
         </module>
-
+-->
         <!--
 
         NAMING CHECKS
@@ -236,13 +240,14 @@
                 default="^(package .*;\s*)|(import .*;\s*)|( *\* *https?://.*)$" />
         </module>
 
+        <!-- Checks for placement of the left curly brace ('{'). -->
+<!-- 
         <module name="LeftCurly">
-            <!-- Checks for placement of the left curly brace ('{'). -->
             <property name="severity" value="warning" />
         </module>
+-->
 
-        <module name="RightCurly">
-            <!-- Checks right curlies on CATCH, ELSE, and TRY blocks are on
+           <!-- Checks right curlies on CATCH, ELSE, and TRY blocks are on
             the same line. e.g., the following example is fine:
             <pre>
               if {
@@ -258,16 +263,19 @@
               else
             </pre>
             -->
-            <property name="option" value="same" />
+<!-- 
+        <module name="RightCurly">
+             <property name="option" value="same" />
             <property name="severity" value="warning" />
         </module>
+-->
 
-        <!-- Checks for braces around if and else blocks -->
+        <!-- Checks for braces around if and else blocks 
         <module name="NeedBraces">
             <property name="severity" value="warning" />
             <property name="tokens" value="LITERAL_IF, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO" />
         </module>
-
+-->
         <module name="UpperEll">
             <!-- Checks that long constants are defined with an upper ell.-->
             <property name="severity" value="error" />
@@ -305,15 +313,17 @@
         WHITESPACE CHECKS
 
         -->
+        
+        <!--  -->
         <module name="GenericWhitespace">
             <property name="severity" value="warning" />
         </module>
+-->
 
-        <module name="WhitespaceAround">
             <!-- Checks that various tokens are surrounded by whitespace.
                  This includes most binary operators and keywords followed
                  by regular or curly braces.
-            -->
+        <module name="WhitespaceAround">
             <property name="tokens"
                 value="ASSIGN, BAND, BAND_ASSIGN, BOR,
         BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN,
@@ -326,41 +336,43 @@
             <property name="allowEmptyMethods" value="true" />
             <property name="severity" value="warning" />
         </module>
-
-        <module name="WhitespaceAfter">
-            <!-- Checks that commas, semicolons and typecasts are followed by
-                 whitespace.
             -->
+
+            <!-- Checks that commas, semicolons and typecasts are followed by
+                 whitespace.            
+        <module name="WhitespaceAfter">
+
             <property name="tokens" value="COMMA, SEMI, TYPECAST" />
             <property name="severity" value="warning" />
         </module>
+-->
 
-        <module name="NoWhitespaceAfter">
             <!-- Checks that there is no whitespace after various unary operators.
                  Linebreaks are allowed.
-            -->
+        <module name="NoWhitespaceAfter">
             <property name="tokens" value="BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS,
         UNARY_PLUS" />
             <property name="allowLineBreaks" value="true" />
             <property name="severity" value="warning" />
         </module>
+-->
 
-        <module name="NoWhitespaceBefore">
             <!-- Checks that there is no whitespace before various unary operators.
                  Linebreaks are allowed.
-            -->
+        <module name="NoWhitespaceBefore">
             <property name="tokens" value="SEMI, DOT, POST_DEC, POST_INC" />
             <property name="allowLineBreaks" value="true" />
             <property name="severity" value="warning" />
         </module>
-
-        <module name="ParenPad">
-            <!-- Checks that there is no whitespace before close parens or after
-                 open parens.
             -->
+
+            <!-- Checks that there is no whitespace before close parens or after
+                 open parens.           
+        <module name="ParenPad">
             <property name="severity" value="warning" />
         </module>
-
+            --> 
+            
         <!-- No System.out -->
         <module name="Regexp">
             <property name="format" value="System\.out\.println" />

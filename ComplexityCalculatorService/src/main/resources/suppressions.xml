@@ -6,11 +6,13 @@
 
 <suppressions>
 
-    <!-- Illegal imports overrides 
+    <!-- Illegal imports overrides -->
     <suppress files="LogConfigurationContextListener\.java" checks="IllegalImport"/>
     <suppress files="LoggerUtils\.java" checks="IllegalImport"/>
-    <suppress files="ExceptionFilter\.java" checks="IllegalCatch"/>
--->
+    <suppress files="." checks="JavadocTypeCheck"/>
+    <suppress files="." checks="NeedBracesCheck"/>
+    <suppress files="." checks="FileTabCharacterCheck"/>  
+    <suppress files="." checks="WhitespaceAroundCheck"/> 
 
     <!-- Unit and integration tests -->
     <suppress files="^.+(IT|Test)\.java$" checks="InnerAssignment" />
