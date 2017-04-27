@@ -314,7 +314,7 @@
 
         -->
         
-        <!--  -->
+        <!--
         <module name="GenericWhitespace">
             <property name="severity" value="warning" />
         </module>

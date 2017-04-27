@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:output encoding="UTF-8" method="xml"></xsl:output>
 
@@ -33,8 +33,8 @@
   </xsl:template>
 
   <xsl:template match="file">
-    <xsl:variable name="filename" select="@name"/>
-    
+    <xsl:variable name="filename" select="@name" />
+        
     <xsl:for-each select=".//error">
     <xsl:if test="@severity eq 'error'"> 
 
@@ -52,10 +52,9 @@
           <xsl:attribute name="type">
             <xsl:value-of select="@message" />
           </xsl:attribute>
-          <xsl:value-of select="$filename" />
-          <xsl:text> Line </xsl:text> <xsl:value-of select="@line" />
-          <xsl:text>: </xsl:text>
-          <xsl:value-of select="@message" />
+          <xsl:text></xsl:text> <xsl:value-of select="$filename" />
+          <xsl:text>:</xsl:text> <xsl:value-of select="@line" />
+          <xsl:text> </xsl:text> <xsl:value-of select="@message" />
         </failure>
       </testcase>
       </xsl:if>
