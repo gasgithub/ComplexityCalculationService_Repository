@@ -101,7 +101,7 @@ public class TestApplication {
 				.add( "moderateWars", expectedObject.getModerateWars() )
 				.add( "moderateEJBs", expectedObject.getModerateEJBs() ) 								
  				.add( "rars", expectedObject.getRars() )
-				.add( "complexWars", expectedObject.getSimpleWars() )
+				.add( "complexWars", expectedObject.getComplexWars() )
 				.add( "complexEJBs", expectedObject.getComplexEJBs() )
  				.build();
  		
