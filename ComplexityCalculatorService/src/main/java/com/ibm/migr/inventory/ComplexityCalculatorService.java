@@ -125,46 +125,46 @@ public class ComplexityCalculatorService {
 	private void calculateModuleComplexity(CommonArchiveInventory archiveInventory, CalculationResult calculationResult) {
 		String moduleType = archiveInventory.getModuleType();
 		
-//		switch (moduleType) {
-//		case WEB_MODULE:
-//			System.out.println("WEB_MODULE");
-//			calculateWebModuleComplexity(archiveInventory, calculationResult);
-//		break;
-//		case EJB_MODULE:
-//			System.out.println("EJB_MODULE");
-//			calculateEJBModuleComplexity(archiveInventory, calculationResult);
-//		break;
-//		case APP_CLIENT_MODULE:
-//			System.out.println("APP_CLIENT_MODULE");
-//			calculateAppClientModuleComplexity(archiveInventory, calculationResult);
-//		break;
-//		case RAR_MODULE:
-//			System.out.println("RAR_MODULE");
-//			calculateRarModuleComplexity(archiveInventory, calculationResult);
-//		break;
-//		case UTIL_MODULE:
-//			System.out.println("UTIL_MODULE");
-//			calculateUtilModuleComplexity(archiveInventory, calculationResult);
-//		break;
-//
-//		default:
-//			System.out.println("Uknown module type: " + moduleType);
-//		break;
-		
-		
-		if (moduleType.equals(WEB_MODULE)) {
+		switch (moduleType) {
+		case WEB_MODULE:
+			System.out.println("WEB_MODULE");
 			calculateWebModuleComplexity(archiveInventory, calculationResult);
-		} else if (moduleType.equals(EJB_MODULE)) {
-				calculateEJBModuleComplexity(archiveInventory, calculationResult);
-		} else if (moduleType.equals(APP_CLIENT_MODULE)) {
+		break;
+		case EJB_MODULE:
+			System.out.println("EJB_MODULE");
+			calculateEJBModuleComplexity(archiveInventory, calculationResult);
+		break;
+		case APP_CLIENT_MODULE:
+			System.out.println("APP_CLIENT_MODULE");
 			calculateAppClientModuleComplexity(archiveInventory, calculationResult);
-		} else if (moduleType.equals(RAR_MODULE)) {
+		break;
+		case RAR_MODULE:
+			System.out.println("RAR_MODULE");
 			calculateRarModuleComplexity(archiveInventory, calculationResult);
-		} else if (moduleType.equals(UTIL_MODULE)) {
+		break;
+		case UTIL_MODULE:
+			System.out.println("UTIL_MODULE");
 			calculateUtilModuleComplexity(archiveInventory, calculationResult);
-		} else {
+		break;
+
+		default:
 			System.out.println("Uknown module type: " + moduleType);
-		}
+		break;
+		
+//		
+//		if (moduleType.equals(WEB_MODULE)) {
+//			calculateWebModuleComplexity(archiveInventory, calculationResult);
+//		} else if (moduleType.equals(EJB_MODULE)) {
+//				calculateEJBModuleComplexity(archiveInventory, calculationResult);
+//		} else if (moduleType.equals(APP_CLIENT_MODULE)) {
+//			calculateAppClientModuleComplexity(archiveInventory, calculationResult);
+//		} else if (moduleType.equals(RAR_MODULE)) {
+//			calculateRarModuleComplexity(archiveInventory, calculationResult);
+//		} else if (moduleType.equals(UTIL_MODULE)) {
+//			calculateUtilModuleComplexity(archiveInventory, calculationResult);
+//		} else {
+//			System.out.println("Uknown module type: " + moduleType);
+//		}
 	}
 
 	

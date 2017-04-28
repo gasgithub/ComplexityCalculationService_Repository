@@ -38,6 +38,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         
         
         <!-- Liberty server properties -->
@@ -59,7 +60,7 @@
             entered here. -->
         <cf.org>dev</cf.org>
         <cf.username>dhvines@us.ibm.com</cf.username>
-        <cf.password>lp223013</cf.password>
+        <cf.password>password</cf.password>
 
         <!-- This is the host for your app in Bluemix and what it will be called in the dashboard. -->
         <cf.host>${app.name}</cf.host>
