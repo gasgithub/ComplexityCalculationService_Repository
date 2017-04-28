@@ -150,21 +150,8 @@ public class ComplexityCalculatorService {
 		default:
 			System.out.println("Uknown module type: " + moduleType);
 		break;
-		
-//		
-//		if (moduleType.equals(WEB_MODULE)) {
-//			calculateWebModuleComplexity(archiveInventory, calculationResult);
-//		} else if (moduleType.equals(EJB_MODULE)) {
-//				calculateEJBModuleComplexity(archiveInventory, calculationResult);
-//		} else if (moduleType.equals(APP_CLIENT_MODULE)) {
-//			calculateAppClientModuleComplexity(archiveInventory, calculationResult);
-//		} else if (moduleType.equals(RAR_MODULE)) {
-//			calculateRarModuleComplexity(archiveInventory, calculationResult);
-//		} else if (moduleType.equals(UTIL_MODULE)) {
-//			calculateUtilModuleComplexity(archiveInventory, calculationResult);
-//		} else {
-//			System.out.println("Uknown module type: " + moduleType);
-//		}
+		}		
+
 	}
 
 	
@@ -298,6 +285,4 @@ public class ComplexityCalculatorService {
 		return technologies;
 	}
 
-
-	
 }
