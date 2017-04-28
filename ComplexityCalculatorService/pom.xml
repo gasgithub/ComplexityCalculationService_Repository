@@ -256,10 +256,10 @@
                             <configuration>
                                 <failOnViolation>false</failOnViolation>
                                 <configLocation>
-                                    ${project.basedir}/src/main/resources/checker.xml
+                                    ${project.basedir}/src/test/resources/checker.xml
                                 </configLocation>
                                 <suppressionsLocation>
-                                    ${project.basedir}/src/main/resources/suppressions.xml
+                                    ${project.basedir}/src/test/resources/suppressions.xml
                                 </suppressionsLocation>
 
                             </configuration>
