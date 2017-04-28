@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.ibm.migr.inventory.model.Archives;
 import com.ibm.migr.inventory.model.CommonArchiveInventory;
 import com.ibm.migr.inventory.model.ContainedArchiveInventory;
 import com.ibm.migr.inventory.model.InventoryReport;
