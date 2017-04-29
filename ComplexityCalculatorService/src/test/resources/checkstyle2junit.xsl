@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-    <xsl:param name="workspace" select="system-property('WORKSPACE')"/>
-    <xsl:param name="checkstyle" select="'checkstyle'"/>
+    <xsl:param name="WORKSPACE" select="WORKSPACE"/>
   
     <xsl:output encoding="UTF-8" method="xml"></xsl:output>
 
@@ -11,10 +10,10 @@
             <xsl:for-each select="//checkstyle">
                 <testsuite>
                     <xsl:attribute name="id">
-                        <xsl:value-of select='$checkstyle' />
+                        <xsl:value-of select='checkstyle' />
                     </xsl:attribute>
                     <xsl:attribute name="name">
-                        <xsl:value-of select='$checkstyle' />
+                        <xsl:value-of select='checkstyle' />
                     </xsl:attribute>
                     <xsl:apply-templates />
                 </testsuite>
@@ -25,11 +24,11 @@
     <xsl:template match="file">
         <testcase>
             <xsl:attribute name="id">
-                <xsl:value-of select="substring-after(@name,$workspace)" />
+                <xsl:value-of select="substring-after(@name,$WORKSPACE)" />
             </xsl:attribute>
             
             <xsl:attribute name="name">
-              <xsl:value-of select="substring-after(@name,$workspace)" />
+                <xsl:value-of select="substring-after(@name,$WORKSPACE)" />
             </xsl:attribute>
             
             <xsl:call-template name="error" />
