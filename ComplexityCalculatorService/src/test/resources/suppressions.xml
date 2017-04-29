@@ -10,8 +10,10 @@
     <suppress files="." checks="NeedBracesCheck"/>
     <suppress files="." checks="FileTabCharacterCheck"/>  
     <suppress files="." checks="WhitespaceAroundCheck"/> 
+    <!--
     <suppress files="." checks="ImportOrder"/> 
+    -->
     <suppress files="." checks="Regexp"/> 
     <suppress files="." checks="LineLength"/> 
-    
+
 </suppressions>
