@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.migr.inventory.model.CommonArchiveInventory;
 import com.ibm.migr.inventory.model.ContainedArchiveInventory;
 import com.ibm.migr.inventory.model.InventoryReport;
+import com.ibm.migr.inventory.model.Archives;
 import com.ibm.migr.inventory.model.Summary;
 
 import com.ibm.websphere.jaxrs20.multipart.IAttachment;
@@ -67,7 +68,7 @@ public class ComplexityCalculatorService {
 //		}
 		
 //		System.out.println("Top Archives");
-//		Archives topArchives = inventoryReport.getArchives();
+        Archives topArchives = inventoryReport.getArchives();
 //		System.out.println("getEars: " + topArchives.getEars());
 //		System.out.println("getEjbs" + topArchives.getEjbs());
 //		System.out.println("getWars" + topArchives.getWars());
@@ -76,7 +77,7 @@ public class ComplexityCalculatorService {
 //		System.out.println("getAppClients: " + topArchives.getAppClients());
 		
 //		System.out.println("Top Summary");
-//		Summary topSummary = inventoryReport.getSummary();
+		Summary topSummary = inventoryReport.getSummary();
 //		System.out.println("getServlets: " + topSummary.getServlets());
 //		System.out.println("getJsps: " + topSummary.getJsps());
 //		System.out.println("getStatelessSessionBeans: " + topSummary.getStatelessSessionBeans());
