@@ -14,6 +14,8 @@
     <xsl:variable name="document-uri" select="document-uri(.)"/>   
     <xsl:variable name="filename" select="(tokenize($document-uri,'/'))[last()]"/>
     
+    <xsl:variable name="findbugs_package" select="'com.puppycrawl.tools.checkstyle.checks'" />
+    
     <xsl:variable name="checkstyle" select="'checkstyle'"/>
   
     <xsl:output encoding="UTF-8" method="xml"/>
@@ -35,17 +37,10 @@
     </xsl:template>
 
     <xsl:template match="file">
-        <testcase>
-            <xsl:attribute name="id">
-                <xsl:value-of select="substring-after(@name,$WORKSPACE)" />
-            </xsl:attribute>
-            
-            <xsl:attribute name="name">
-                <xsl:value-of select="substring-after(@name,$WORKSPACE)" />
-            </xsl:attribute>
-            
+        <!-- process each error as though it were a separate test case -->
+        <xsl:for-each select=".//error">  
             <xsl:call-template name="error" />
-        </testcase>
+        </xsl:for-each>
     </xsl:template>
 
     <xsl:template name="error">
@@ -53,8 +48,19 @@
         <!-- return the filename of the component under test (CUT) -->
         <xsl:variable name="CUT" select="(tokenize(@name,$FILESEPARATOR))[last()]"/>
 
+        <testcase>
+            <xsl:attribute name="id">
+                <xsl:value-of select="(tokenize(@source,'.'))[last()]" />
+            </xsl:attribute>
+            
+            <xsl:attribute name="name">
+                <xsl:value-of select="@source" />
+            </xsl:attribute>
+            
+        </testcase>
+
         <!-- junit xml format include first failure in a testcase -->
-        <xsl:for-each select=".//error[position()&lt;=1]">     
+<!--        <xsl:for-each select=".//error[position()&lt;=1]">     -->
         
             <failure>
             
@@ -80,7 +86,7 @@
                 <xsl:value-of select="@line" />
                 <xsl:text>]</xsl:text>
             </failure>
-        </xsl:for-each>
+
     </xsl:template>
    
 </xsl:stylesheet>
