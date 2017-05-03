@@ -50,7 +50,7 @@
 
         <testcase>
             <xsl:attribute name="id">
-                <xsl:value-of select="(tokenize(@source,'.'))[last()]" />
+                <xsl:value-of select="@source" />
             </xsl:attribute>
             
             <xsl:attribute name="name">
