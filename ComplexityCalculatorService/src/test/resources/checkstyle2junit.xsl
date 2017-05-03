@@ -46,7 +46,7 @@
     <xsl:template name="error">
 
         <!-- return the filename of the component under test (CUT) -->
-        <xsl:variable name="CUT" select="(tokenize(@name,$FILESEPARATOR))[last()]"/>
+        <xsl:variable name="CUT" select="../@name"/>
 
         <testcase>
             <xsl:attribute name="id">
@@ -63,12 +63,11 @@
             <failure>
             
                 <xsl:attribute name="message">
-                <!--
+          
                     <xsl:value-of select="$CUT" />
                     <xsl:text>(</xsl:text> <xsl:value-of select="@line" /> <xsl:text>)</xsl:text>
                     <xsl:text>: </xsl:text> <xsl:value-of select="@message" />
-                -->
-                    <xsl:value-of select="@message" />
+
                 </xsl:attribute>
                 <xsl:attribute name="type">
                     <xsl:value-of select="@source" />
@@ -82,11 +81,10 @@
                 <xsl:value-of select="$CUT" />
                 <xsl:text>:[line </xsl:text>
                 <xsl:value-of select="@line" />
-                <xsl:text>]</xsl:text>
-            </failure>
-
-                     
-        </testcase>
+                
+                </failure>
+                
+                </testcase>
         
     </xsl:template>
    
