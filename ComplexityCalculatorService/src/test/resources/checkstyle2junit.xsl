@@ -59,17 +59,26 @@
             <failure>
             
                 <xsl:attribute name="message">
+                <!--
                     <xsl:value-of select="$CUT" />
                     <xsl:text>(</xsl:text> <xsl:value-of select="@line" /> <xsl:text>)</xsl:text>
                     <xsl:text>: </xsl:text> <xsl:value-of select="@message" />
+                -->
+                    <xsl:value-of select="@message" />
                 </xsl:attribute>
                 <xsl:attribute name="type">
                     <xsl:value-of select="@source" />
                 </xsl:attribute>
-                <!-- There's no stack trace in the input file so replicate the message -->
+                <!-- There's no stack trace in the input file so replicate the message 
                 <xsl:value-of select="$CUT" />
                 <xsl:text>(</xsl:text> <xsl:value-of select="@line" /> <xsl:text>)</xsl:text>
                 <xsl:text>: </xsl:text> <xsl:value-of select="@message" />
+                -->
+                <xsl:text>At </xsl:text>
+                <xsl:value-of select="$CUT" />
+                <xsl:text>:[line </xsl:text>
+                <xsl:value-of select="@line" />
+                <xsl:text>]</xsl:text>
             </failure>
         </xsl:for-each>
     </xsl:template>
