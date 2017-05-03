@@ -3,6 +3,10 @@
 
     <!-- Command line arguments -->
     <xsl:param name="WORKSPACE" select="WORKSPACE"/>
+    
+    <!-- Windows => enter four backlashes for this variable, FILESEPARATOR="\\\\"
+         Linux   => enter single forward for this variable, FILESEPARATOR="/"
+    -->  
     <xsl:param name="FILESEPARATOR" select="FILESEPARATOR"/>
     
     <!-- return the filename of the input document -->
@@ -45,22 +49,25 @@
     </xsl:template>
 
     <xsl:template name="error">
-        <!-- Windows: enter four backlashes for this variable, FILESEPARATOR="\\\\" -->
-        <!-- Linux: enter single forward for this variable, FILESEPARATOR="/" -->
-        <xsl:variable name="source_filename" select="(tokenize(@name,$FILESEPARATOR))[last()]"/>
+
+        <!-- return the filename of the component under test (CUT) -->
+        <xsl:variable name="CUT" select="(tokenize(@name,$FILESEPARATOR))[last()]"/>
+
         <!-- junit xml format include first failure in a testcase -->
-        <xsl:for-each select=".//error[position()&lt;=1]">
-        
-            <!-- return the filename of the source -->
+        <xsl:for-each select=".//error[position()&lt;=1]">     
         
             <failure>
+            
                 <xsl:attribute name="message">
-                    <xsl:value-of select=" @message" />
+                    <xsl:value-of select="$CUT" />
+                    <xsl:text>(</xsl:text> <xsl:value-of select="@line" /> <xsl:text>)</xsl:text>
+                    <xsl:text>: </xsl:text> <xsl:value-of select="@message" />
                 </xsl:attribute>
                 <xsl:attribute name="type">
-                    <xsl:value-of select="@severity" />
+                    <xsl:value-of select="@source" />
                 </xsl:attribute>
-                <xsl:value-of select="$source_filename" />
+                <!-- There's no stack trace in the input file so replicate the message -->
+                <xsl:value-of select="$CUT" />
                 <xsl:text>(</xsl:text> <xsl:value-of select="@line" /> <xsl:text>)</xsl:text>
                 <xsl:text>: </xsl:text> <xsl:value-of select="@message" />
             </failure>
