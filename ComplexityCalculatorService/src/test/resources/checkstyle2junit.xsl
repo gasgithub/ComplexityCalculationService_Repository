@@ -2,18 +2,20 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:param name="WORKSPACE" select="WORKSPACE"/>
+    
+    <xsl:variable name="checkstyle" select="'checkstyle'"/>
   
-    <xsl:output encoding="UTF-8" method="xml"></xsl:output>
+    <xsl:output encoding="UTF-8" method="xml"/>
 
     <xsl:template match="/">
         <testsuites>
             <xsl:for-each select="//checkstyle">
                 <testsuite>
                     <xsl:attribute name="id">
-                        <xsl:value-of select='checkstyle' />
+                        <xsl:value-of select="$checkstyle" />
                     </xsl:attribute>
                     <xsl:attribute name="name">
-                        <xsl:value-of select='checkstyle' />
+                        <xsl:value-of select="$checkstyle" />
                     </xsl:attribute>
                     <xsl:apply-templates />
                 </testsuite>
