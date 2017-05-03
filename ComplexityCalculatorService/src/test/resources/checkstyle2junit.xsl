@@ -56,9 +56,7 @@
             <xsl:attribute name="name">
                 <xsl:value-of select="@source" />
             </xsl:attribute>
-            
-        </testcase>
-
+ 
         <!-- junit xml format include first failure in a testcase -->
 <!--        <xsl:for-each select=".//error[position()&lt;=1]">     -->
         
@@ -87,6 +85,9 @@
                 <xsl:text>]</xsl:text>
             </failure>
 
+                     
+        </testcase>
+        
     </xsl:template>
    
 </xsl:stylesheet>
