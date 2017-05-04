@@ -10,15 +10,13 @@
     <xsl:param name="FILESEPARATOR" select="FILESEPARATOR"/>
     
     <!-- return the filename of the input document -->
-    <xsl:variable name="base-uri" select="base-uri(.)"/>
-    <xsl:variable name="document-uri" select="document-uri(.)"/>       
-    <xsl:variable name="INPUT_DOCUMENT_FILENAME" select="(tokenize($document-uri,'/'))[last()]"/>
-    
-    <xsl:variable name="findbugs_package" select="'com.puppycrawl.tools.checkstyle.checks'" />
-    
-    <xsl:variable name="TESTSUITE_NAME" select="'checkstyle.checks'"/>
+    <xsl:variable name="base-uri" select="base-uri(.)" />
+    <xsl:variable name="document-uri" select="document-uri(.)" />       
+    <xsl:variable name="INPUT_DOCUMENT_FILENAME" select="(tokenize($document-uri,'/'))[last()]" />
   
-    <xsl:output encoding="UTF-8" method="xml"/>
+    <xsl:variable name="TESTSUITE_NAME" select="'checkstyle.checks'" />
+  
+    <xsl:output encoding="UTF-8" method="xml" />
 
     <xsl:template match="/">
         <testsuites>
@@ -38,15 +36,19 @@
 
     <xsl:template match="file">
     
-        <xsl:variable name="CLASSNAME" select="(tokenize(@name,$FILESEPARATOR))[last()]"/>
+        <xsl:variable name="DOT_JAVA_EXTENSION" select="'.java'" />
+        <xsl:variable name="SOURCE_FILENAME" select="(tokenize(@name,$FILESEPARATOR))[last()]" />
+        <xsl:variable name="SOURCE_PATHNAME_BEFORE_EXTENSION" select="(substring-before(@name,$DOT_JAVA_EXTENSION))" />   
 
+        <xsl:variable name="SOURCE_PATHNAME_AFTER_BASEDIR_AND_BEFORE_EXTENSION" select="(substring-after($SOURCE_PATHNAME_BEFORE_EXTENSION,$SOURCEPATH))" />
         <!-- 
                 
-                TODO: FULLY_QIALIFIED_CLASSNAME remove trailing .java & translate all / characters to . 
+                TODO: FULLY_QIALIFIED_CLASSNAME translate all / characters to . 
                 
         -->
-                        
-        <xsl:variable name="FULLY_QUALIFIED_CLASSNAME" select="(substring-after(@name,$SOURCEPATH))" />        
+        
+        <xsl:variable name="FULLY_QUALIFIED_CLASSNAME" select="(translate($SOURCE_PATHNAME_AFTER_BASEDIR_AND_BEFORE_EXTENSION,$FILESEPARATOR,'.'))" />                                                    
+ 
             
         <xsl:if test="not(./error)">
     
@@ -54,7 +56,7 @@
         
             <testcase>
                 <xsl:attribute name="id">
-                    <xsl:value-of select="$CLASSNAME" />
+                    <xsl:value-of select="$SOURCE_FILENAME" />
                 </xsl:attribute>
             
                 <!-- this is the junit test case -->
@@ -99,7 +101,7 @@
 
                         <!-- this is the junit exception -->
                         <xsl:text>At </xsl:text>
-                        <xsl:value-of select="$CLASSNAME" />
+                        <xsl:value-of select="$SOURCE_FILENAME" />
                         <xsl:text>:[line </xsl:text>
                         <xsl:value-of select="@line" />
                         <xsl:text>]</xsl:text>                
