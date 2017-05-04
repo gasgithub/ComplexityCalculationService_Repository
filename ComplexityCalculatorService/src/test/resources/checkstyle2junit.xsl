@@ -16,7 +16,7 @@
     
     <xsl:variable name="findbugs_package" select="'com.puppycrawl.tools.checkstyle.checks'" />
     
-    <xsl:variable name="CHECKSTYLE_VALIDATION" select="'checkstyle'"/>
+    <xsl:variable name="TESTSUITE_NAME" select="'checkstyle.checks'"/>
   
     <xsl:output encoding="UTF-8" method="xml"/>
 
@@ -28,7 +28,7 @@
                         <xsl:value-of select="$INPUT_DOCUMENT_FILENAME" />
                     </xsl:attribute>
                     <xsl:attribute name="name">
-                        <xsl:value-of select="$CHECKSTYLE_VALIDATION" />
+                        <xsl:value-of select="$TESTSUITE_NAME" />
                     </xsl:attribute>
                     <xsl:apply-templates />
                 </testsuite>
