@@ -424,6 +424,7 @@
                                 <exclude>**/it/**</exclude>
                             </excludes>
                             <reportsDirectory>${project.build.directory}/test-reports/unit</reportsDirectory>
+                            <testFailureIgnore>true</testFailureIgnore>
                         </configuration>
                     </execution>
                 </executions>
