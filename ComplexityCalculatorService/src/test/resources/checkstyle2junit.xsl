@@ -16,7 +16,7 @@
     
     <xsl:variable name="findbugs_package" select="'com.puppycrawl.tools.checkstyle.checks'" />
     
-    <xsl:variable name="CHECKSTYLE_VALDATION" select="'Checkstyle validation'"/>
+    <xsl:variable name="CHECKSTYLE_VALIDATION" select="'Checkstyle validation'"/>
   
     <xsl:output encoding="UTF-8" method="xml"/>
 
