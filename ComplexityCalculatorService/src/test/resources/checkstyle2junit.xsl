@@ -49,50 +49,52 @@
                     <xsl:value-of select="$CUT" />
                 </xsl:attribute>
             
+                <!-- this is the junit test case -->
                 <xsl:attribute name="name">
                     <xsl:value-of select="$CUT" />
                 </xsl:attribute>    
             </testcase>
 
-    </xsl:if>
+        </xsl:if>
 
-    <xsl:if test="./error">
+        <xsl:if test="./error">
            
-        <!-- if a file has errors then process each error as a test cese that failed -->    
+        <!-- if a file has errors then process each error as a test case that failed -->    
 
-        <xsl:for-each select=".//error">          
+            <xsl:for-each select=".//error">          
         
-         <testcase>            
-                       <xsl:attribute name="id">
-                <xsl:value-of select="$CUT" />
-            </xsl:attribute>
-            
-            <xsl:attribute name="name">
-                <xsl:value-of select="$CUT" />
-            </xsl:attribute>
-
-
-    
-        <!-- include all findbug violations as junit failures -->
-        
-            <failure>
-            
-                <xsl:attribute name="message">
-
-                    <xsl:value-of select="@message" />
-                    <xsl:text> in </xsl:text>
-                    <xsl:value-of select="$CUT" />
-
-                </xsl:attribute>
-                <xsl:attribute name="type">
+                <testcase>            
+                    <xsl:attribute name="id">
                     <xsl:value-of select="@source" />
                 </xsl:attribute>
 
-                <xsl:text>At </xsl:text>
-                <xsl:value-of select="$CUT" />
-                <xsl:text>:[line </xsl:text>
-                <xsl:value-of select="@line" />
-                <xsl:text>]</xsl:text>                
+                <!-- this is the junit test case -->            
+                <xsl:attribute name="name">
+                    <xsl:value-of select="@source" />
+                </xsl:attribute>
+
+                <!-- include all findbug violations as junit failures -->
+        
+                <failure>
+            
+                    <!-- this is the junit details -->
+                    <xsl:attribute name="message">
+                        <xsl:value-of select="@message" />
+                        <xsl:text> in </xsl:text>
+                        <xsl:value-of select="$CUT" />
+                    </xsl:attribute>
+                    
+                    <xsl:attribute name="type">
+                        <xsl:value-of select="@source" />
+                    </xsl:attribute>
+
+                    <!-- this is the junit exception -->
+                    <xsl:text>At </xsl:text>
+                    <xsl:value-of select="$CUT" />
+                    <xsl:text>:[line </xsl:text>
+                    <xsl:value-of select="@line" />
+                    <xsl:text>]</xsl:text>                
+                
                 </failure>
         </testcase>
   
