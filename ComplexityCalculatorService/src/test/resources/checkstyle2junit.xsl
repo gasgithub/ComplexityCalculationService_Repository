@@ -2,7 +2,7 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <!-- Command line arguments -->
-    <xsl:param name="WORKSPACE" select="WORKSPACE"/>
+    <xsl:param name="SOURCEPATH" select="SOURCEPATH"/>
     
     <!-- Windows => enter four backlashes for this variable, FILESEPARATOR="\\\\"
          Linux   => enter single forward for this variable, FILESEPARATOR="/"
@@ -46,7 +46,7 @@
                 
         -->
                         
-        <xsl:variable name="FULLY_QUALIFIED_CLASSNAME" select="(substring-after(@name,$WORKSPACE))" />        
+        <xsl:variable name="FULLY_QUALIFIED_CLASSNAME" select="(substring-after(@name,$SOURCEPATH))" />        
             
         <xsl:if test="not(./error)">
     
