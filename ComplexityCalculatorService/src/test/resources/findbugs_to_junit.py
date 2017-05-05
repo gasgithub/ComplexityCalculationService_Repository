@@ -44,7 +44,7 @@ class jUnitXML(object):
         else:
             suite = etree.SubElement(self.root, 'testsuite')
             suite.attrib['id'] = suite_id
-            suite.attrib['name'] = 'findbugs'
+            suite.attrib['name'] = 'findbugs.checks'
             self.suites[suite_id] = suite
             return suite
 
