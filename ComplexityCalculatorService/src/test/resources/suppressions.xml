@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+
+    <suppress files="." checks="JavadocTypeCheck"/>
+    <suppress files="." checks="NeedBracesCheck"/>
+    <suppress files="." checks="FileTabCharacterCheck"/>  
+    <suppress files="." checks="WhitespaceAroundCheck"/> 
+    <!--
+    <suppress files="." checks="ImportOrder"/> 
+    -->
+    <suppress files="." checks="Regexp"/> 
+    <suppress files="." checks="LineLength"/> 
+
+</suppressions>

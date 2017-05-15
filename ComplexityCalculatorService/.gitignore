@@ -1,0 +1,23 @@
+
+# Directories #
+target/
+.settings/
+.metadata/
+ 
+*.class
+
+# Package Files #
+# *.jar XSLT processor
+*.war
+*.ear
+*.rar
+ 
+######################
+# Eclipse
+######################
+
+.checkstyle
+.classpath
+.factorypath
+.project
+ 

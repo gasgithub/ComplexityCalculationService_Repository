@@ -30,15 +30,15 @@
     
     <properties>
     
-<maven.findbugsplugin.version>3.0.3</maven.findbugsplugin.version>
+<maven.findbugsplugin.version>3.0.4</maven.findbugsplugin.version>
 <maven.checkstyleplugin.version>2.17</maven.checkstyleplugin.version>
 
     <!-- Begin properties from liberty app accelerator -->
         
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         
         
         <!-- Liberty server properties -->
@@ -60,7 +60,7 @@
             entered here. -->
         <cf.org>dev</cf.org>
         <cf.username>dhvines@us.ibm.com</cf.username>
-        <cf.password>lp223013</cf.password>
+        <cf.password>password</cf.password>
 
         <!-- This is the host for your app in Bluemix and what it will be called in the dashboard. -->
         <cf.host>${app.name}</cf.host>
@@ -180,23 +180,8 @@
 
             <build>
                 <plugins>
+                 
                 <!-- 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>2.17</version>
-                        <executions>
-                            <execution>
-                                <id>verify-style</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                -->
-                
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
@@ -208,7 +193,6 @@
                         <findbugsXmlOutputDirectory>
                             ${project.build.directory}/findbugs
                         </findbugsXmlOutputDirectory>
-                        <!-- Exclude sources -->
                         <excludeFilterFile>
                             ${mavan.findbugsplugin.exclude.file} 
                         </excludeFilterFile>
@@ -223,6 +207,42 @@
                         </execution>
                     </executions>
                 </plugin>
+              -->
+              
+                      <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <version>${maven.findbugsplugin.version}</version>
+            <configuration>
+                <!--
+                    Enables analysis which takes more memory but finds more bugs.
+                    If you run out of memory, changes the value of the effort element
+                    to 'Low'.
+                --> 
+                <effort>Max</effort>
+                <!-- Build doesn't fail if problems are found -->
+                <failOnError>false</failOnError>
+                <!-- Reports all bugs (other values are medium and max) -->
+                <threshold>Low</threshold>
+                <!-- Produces XML report -->
+                <xmlOutput>true</xmlOutput>
+                <!-- Configures the directory in which the XML report is created -->
+                <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+            </configuration>
+            <executions>
+                <!--
+                    Ensures that FindBugs inspects source code when project is compiled.
+                -->
+                <execution>
+                    <id>analyze-compile</id>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+              
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
@@ -234,12 +254,14 @@
                             <id>validate</id>
                             <phase>validate</phase>
                             <configuration>
+                                <failOnViolation>false</failOnViolation>
                                 <configLocation>
-                                    ${project.basedir}/src/main/resources/checker.xml
+                                    ${project.basedir}/src/test/resources/checker.xml
                                 </configLocation>
                                 <suppressionsLocation>
-                                    ${project.basedir}/src/main/resources/suppressions.xml
+                                    ${project.basedir}/src/test/resources/suppressions.xml
                                 </suppressionsLocation>
+
                             </configuration>
                         <goals>
                             <goal>check</goal>
@@ -402,6 +424,7 @@
                                 <exclude>**/it/**</exclude>
                             </excludes>
                             <reportsDirectory>${project.build.directory}/test-reports/unit</reportsDirectory>
+                            <testFailureIgnore>true</testFailureIgnore>
                         </configuration>
                     </execution>
                 </executions>
@@ -490,7 +513,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Plugin to run functional tests -->
+            <!-- Plugin to run integration tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
